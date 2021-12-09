@@ -1173,7 +1173,7 @@ def os_wget(fileurl, targetdir, num_tries=3, secsbetweentries=10, wgetparams="")
     wgetoutfile = "{0}/wget.out".format(test_output_get_tmp_dir())
 
     log_debug("Downloading file via wget: {0}".format(fileurl))
-    cmd = "wget {0} --no-check-certificate -P {1} {2} > {3} 2>&1".\
+    cmd = "wget {0} --retry-connrefused --waitretry=30 --no-check-certificate -P {1} {2} > {3} 2>&1".\
        format(fileurl, targetdir, wgetparams, wgetoutfile)
     attemptnum = 1
     while attemptnum <= num_tries:
